@@ -1,7 +1,7 @@
-# dlhf
-Download from Huggingface
+# hfdl
+Huggingface Downloader
 
-Forked from https://github.com/oobabooga/text-generation-webui and stripped of everything but the logic to download files.
+Forked from https://github.com/oobabooga/text-generation-webui and stripped of everything but the logic to download files. Then slightly refactored to run with uvicorn instead of Gradio.
 
 How to run:
 
