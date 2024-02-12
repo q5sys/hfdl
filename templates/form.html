@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Download Model from Hugging Face</title>
+</head>
+<body>
+    <h2>Model Download Form</h2>
+    <form action="/download-model/" method="post">
+        <label for="path">System Path:</label><br>
+        <input type="text" id="path" name="path"><br>
+        <label for="repo">Huggingface Repo:</label><br>
+        <input type="text" id="repo" name="repo"><br>
+        <label for="specific_file">Specific File (optional):</label><br>
+        <input type="text" id="specific_file" name="specific_file"><br>
+        <input type="submit" value="Download">
+    </form>
+</body>
+</html>
