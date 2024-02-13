@@ -37,6 +37,7 @@ class ModelDownloader:
 
         try:
             from huggingface_hub import get_token
+
             token = get_token()
         except ImportError:
             token = os.getenv("HF_TOKEN")
@@ -298,18 +299,23 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
     )
 
 
+# ...
+
 @app.post("/download-model/")
 async def download_model(request: Request,
                          path: str = Form(...),
                          repo: str = Form(...),
                          specific_file: str = Form(None)):
-    # Placeholder for download logic
-    # Implement the download model logic here
     form_data = {"path": path, "repo": repo, "specific_file": specific_file}
     print(f"Form data: {form_data}")
     downloader = ModelDownloader(max_retries=5)
     
-    # Ensure the download path exists
+    if not path:
+        # Read the "path" variable from settings.txt if path is empty
+        settings_file = os.path.join(os.path.dirname(__file__), "settings.txt")
+        with open(settings_file, "r") as f:
+            path = f.read().strip()
+    
     os.makedirs(path, exist_ok=True)
     print(f"Download path: {path}")
 
